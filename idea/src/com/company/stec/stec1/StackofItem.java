@@ -1,17 +1,20 @@
 package com.company.stec.stec1;
 
-public class StackofStrings {
+public class StackofItem<Item> {
 
     private Node first = null;
     int size = 0;
 
     private class Node {
-        String item;
+        Item item;
         Node next;
     }
+public Item peek() throws NoSuchFieldException {
+        if (isEmpty()) throw new NoSuchFieldException("Stack underflow");
+        return first.item;
+}
 
-
-    public void push(String item) {
+    public void push(Item item) {
         size++;
         Node oldFirst = first;
         first = new Node();
@@ -19,11 +22,11 @@ public class StackofStrings {
         first.next = oldFirst;
     }
 
-    public String pop() {
+    public Item pop() {
         size--;
-        String item = first.item;
+        Item item = first.item;
         first = first.next;
-        return item;
+        return Item;
     }
 
     boolean isEmpty() {
